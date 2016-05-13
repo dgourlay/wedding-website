@@ -1,0 +1,75 @@
+---
+layout: default
+title: RSVP
+---
+<article id="main2">
+    <header>
+        <h2>{{ page.title }}</h2>
+        <p>We're so excited to celebrate with you!</p>
+    </header>
+
+    <section class="wrapper style5">
+        <div class="inner">
+            <form id="rsvp-form">
+                <h3>Kindly RSVP</h3>
+                <fieldset>
+                    <label for="email">Email address <span class="usa-additional_text">Required</span></label>
+                    <input id="email" name="email" type="text" autocapitalize="off" autocorrect="off">
+                </fieldset>
+                <fieldset>
+                    <label for="first-name">First name</label>
+                    <input id="first-name" name="first-name" type="text" required="" aria-required="true">
+
+                    <label for="last-name">Last name</label>
+                    <input id="last-name" name="last-name" type="text" required="" aria-required="true">
+
+                </fieldset>
+                <fieldset>
+                    <label>Will you be brining a guest?</label>
+                    <input id="guest-not-attending" type="radio" checked="" name="guest-attending" value="guest-false">
+                    <label for="guest-not-attending">No</label>
+                    <input id="guest-attending" type="radio" name="guest-attending" value="guest-true">
+                    <label for="guest-attending">Yes</label>
+
+                    <label for="guest-first-name">Guest first name</label>
+                    <input id="guest-first-name" name="guest-first-name" type="text" required="" aria-required="true">
+
+                    <label for="guest-last-name">Guest last name</label>
+                    <input id="guest-last-name" name="guest-last-name" type="text" required="" aria-required="true">
+
+                </fieldset>
+                <fieldset>
+
+                    <label for="options">Dinner option</label>
+                    <select name="options" id="options">
+                        <option value="" disabled selected>Select...</option>
+                        <option value="value1">Option A</option>
+                        <option value="value2">Option B</option>
+                    </select>
+
+                    <label for="options">Guest dinner option</label>
+                    <select name="options" id="options">
+                        <option value="" disabled selected>Select...</option>
+                        <option value="value1">Option A</option>
+                        <option value="value2">Option B</option>
+                    </select>
+                </fieldset>
+
+                <fieldset>
+                    <label>Are you interested in group accommodation rates?</label>
+                    <input id="yes-group-accommodation" type="radio" checked="" name="yes-group-accommodation" value="yes-group-accommodation">
+                    <label for="yes-group-accommodation">Yes, please provide details to me when they are available!</label>
+                    <input id="no-group-accommodation" type="radio" name="no-group-accommodation" value="no-group-accommodation">
+                    <label for="no-group-accommodation">No, i'll figure out where to stay on my own.</label>
+
+
+                </fieldset>
+
+                <input type="submit" value="Submit">
+
+            </form>
+        </div>
+    </section>
+
+
+</article>
