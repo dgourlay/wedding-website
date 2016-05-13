@@ -1,16 +1,21 @@
 language: ruby
 rvm:
 - 2.1
-
 before_script:
- - chmod +x ./script/cibuild # or do this locally and commit
-
-# Assume bundler is being used, therefore
-# the `install` step will run `bundle install` by default.
-script: ./script/cibuild
-
+- chmod +x ./script/cibuild
+script: "./script/cibuild"
 env:
   global:
-  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
+  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+sudo: false
+deploy:
+  provider: s3
+  bucket: www.dereklovesmelissa.com
+  secret_access_key:
+    secure: newycsdEngENDQYyd2k/RAMco4tiKDrm8bDYrbAy6sFR0tMzesKVoESx8uptmNbvTe/8HoSZ/RU4M8Xzv7ZwfZsqSloACcs8AA+Hx8o9pL4yOfvn/7+HI528jnCy7D0YHEP4PwtM51JMrbL5HbpSI/Nv84XGpBy1H9xy6Fwvy77xrdxNGXvvWILQ9Ab3UifH/KZDNmzP/Q4oQeZvbtwUn/IDaSXGMdhjYf/TV8cXVn5totc7eLM0wlW8RLlwCG1rVT4SNDLAv1KKL6VTWYYLAF4838CfsIFxKKzayNMJJOuHrvwxYjWQQuAQPM/oR6yhmu2KKqCMGwYaO+w5/z8DH+5PplasGFNFrhBijtJ/F+Zgpbuc3QaJ+/l4n3UbDjSu8bKYGpxPbQgT4NhtRNK/EpO2X8/SHenuDr5acBBr3MCjDDY3+0v67EoC1OmTNP/eBNOncdx7UZelK7AEJsPam2y6K+Ae9moJndO4UxpRzuvDXqjbjW/PzR/IgaR5t4IXWawVHVGjrtsAC5sGTtQ4ltmNn+ewo2Kv/CrbTuZS8jTn/07oz1zdardCxPIvAKpKmKJaFFXu29FhZYltmbLVKuyw0j9DtD8OKPu+AEObc5GOwWRXEuHupYsmi9mDi1xUo/NkhjPDIWnXkT4UJQhG8v+av9Nx1e4ft3rRoQaOpjI=
+  access_key_id:
+    secure: vsKuQ2NvmCRGNxmUbwE2oBEgr3l6qDjykjQ7hJSLc4U/oZHpSoG1Nf9HJFZE3BVjeK86+RPM+n7nsmd/BlWKX1nzetMjAfsmcx90ympyhVu8EVMZc8cLKwb0fn5zB9/6b6ifYM8TtIcoDszN9E8tOf1XtTEs1U+4oRUbZNi/FY4Q5Wq4C+CViQKHkc2uxTGr95buezEo3SxMw1qewS2aoVAP8tG7Si3RMm14jryB306GpZ5KTl7W3MTWlIYJ8cQBvEGl6IcwF+NOw4dk4WS59a379XDWHpLU0SpmilV5I5EsOQPPfxX1bfC7RCE4fPjwuvnXZFONIHsyFJDCJqcMpdJuPjll29BMy1UjgY5AxM8X8qoX+87CeYNtfPiaVz+tEvtyp+MGiO+48JMjnUjn9cMTmavW01mJzj94RHjjx0n5eV63zQ2BXPvLhz4duo0vkGKJDrEeeTnIsofRe+BlK0m6GkgiU8pyl5++LvZhmNjuvrgsu1xSwx2ISuM/93el1ZTHEin0Phl6JuzoB3qF91lBNRAAjXigYcoECCK/rm7Bd7j4PGpGf7bDQ2ESSICKuqX+jBfZEpShbRZCLhePNIp1DMVQ6wLK2dT3E9h0Maqx/P83bTVAXCEeOZ7BSMUoYWY/UliA0im1LSBKhT6f1q5Dd7Rzh9Vtthpw3YhyRnw=
+  skip_cleanup: true
+  local_dir: _site
+  region: us-west-2
 
-sudo: false # route your build to the container-based infrastructure for a faster build
