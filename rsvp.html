@@ -29,13 +29,13 @@ title: RSVP
                     <input id="guest-not-attending" type="radio"
                            ng-model="guestAttending"
                            value="no"
-                           ng-checked="{{'guestAttending === 'no'' | angular}}">
+                           ng-checked="{{'guestAttending === \'no\'' | angular}}">
                     <label for="guest-not-attending">No</label>
 
                     <input id="guest-attending" type="radio"
                            ng-model="guestAttending"
                            value="yes"
-                           ng-checked="{{'guestAttending === 'yes'' | angular}}">
+                           ng-checked="{{'guestAttending === \'yes\'' | angular}}">
                     <label for="guest-attending">Yes</label>
 
                     <div ng-show="guestAttending === 'yes'">
@@ -71,13 +71,13 @@ title: RSVP
                     <input id="yes-group-accommodation" type="radio"
                            ng-model="groupAccommodation"
                            value="yes"
-                           ng-checked="{{'groupAccommodation === 'yes'' | angular}}">
+                           ng-checked="{{'groupAccommodation === \'yes\'' | angular}}">
                     <label for="yes-group-accommodation">Yes, please provide details to me when they are available!</label>
 
                     <input id="no-group-accommodation" type="radio"
                            ng-model="groupAccommodation"
                            value="no"
-                           ng-checked="{{'groupAccommodation === 'no'' | angular}}">
+                           ng-checked="{{'groupAccommodation === \'no\'' | angular}}">
                     <label for="no-group-accommodation">No, i'll figure out where to stay on my own.</label>
                 </fieldset>
 
