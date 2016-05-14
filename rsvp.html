@@ -28,17 +28,19 @@ title: RSVP
                     <label>Will you be brining a guest?</label>
                     <input id="guest-not-attending" type="radio"
                            ng-model="guestAttending"
-                           value="no"
-                           ng-checked="{{'guestAttending === \'no\'' | angular}}">
+                           value="false"
+                           ng-change="changeGuestAttending(guestAttending)"
+                           ng-checked="guestAttending === false">
                     <label for="guest-not-attending">No</label>
 
                     <input id="guest-attending" type="radio"
                            ng-model="guestAttending"
-                           value="yes"
-                           ng-checked="{{'guestAttending === \'yes\'' | angular}}">
+                           value="true"
+                           ng-change="changeGuestAttending(guestAttending)"
+                           ng-checked="guestAttending === true">
                     <label for="guest-attending">Yes</label>
 
-                    <div ng-show="guestAttending === 'yes'">
+                    <div ng-show="guestAttending === true">
                         <label for="guest-first-name">Guest first name</label>
                         <input id="guest-first-name" name="guest-first-name" type="text" required="" aria-required="true">
 
@@ -56,7 +58,7 @@ title: RSVP
                         <option value="value2">Option B</option>
                     </select>
 
-                    <div ng-show="guestAttending === 'yes'">
+                    <div ng-show="guestAttending === true">
                         <label for="options">Guest dinner option</label>
                         <select name="options" id="options">
                             <option value="" disabled selected>Select...</option>
@@ -70,14 +72,16 @@ title: RSVP
                     <label>Are you interested in group accommodation rates?</label>
                     <input id="yes-group-accommodation" type="radio"
                            ng-model="groupAccommodation"
-                           value="yes"
-                           ng-checked="{{'groupAccommodation === \'yes\'' | angular}}">
+                           value="true"
+                           ng-change="changeGroupAccommodation(groupAccommodation)"
+                           ng-checked="groupAccommodation === true">
                     <label for="yes-group-accommodation">Yes, please provide details to me when they are available!</label>
 
                     <input id="no-group-accommodation" type="radio"
                            ng-model="groupAccommodation"
-                           value="no"
-                           ng-checked="{{'groupAccommodation === \'no\'' | angular}}">
+                           value="false"
+                           ng-change="changeGroupAccommodation(groupAccommodation)"
+                           ng-checked="groupAccommodation === false">
                     <label for="no-group-accommodation">No, i'll figure out where to stay on my own.</label>
                 </fieldset>
 
