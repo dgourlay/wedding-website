@@ -1,8 +1,8 @@
 ---
-layout: default
+layout: angular_default
 title: RSVP
 ---
-<article id="main2">
+<article id="main2" ng-app="WeddingApp">
     <header>
         <h2>{{ page.title }}</h2>
         <p>We're so excited to celebrate with you!</p>
@@ -10,7 +10,7 @@ title: RSVP
 
     <section class="wrapper style5">
         <div class="inner">
-            <form id="rsvp-form">
+            <form id="rsvp-form" ng-controller="RSVPController">
                 <h3>Kindly RSVP</h3>
                 <fieldset>
                     <label for="email">Email address <span class="usa-additional_text">Required</span></label>
@@ -26,16 +26,25 @@ title: RSVP
                 </fieldset>
                 <fieldset>
                     <label>Will you be brining a guest?</label>
-                    <input id="guest-not-attending" type="radio" checked="" name="guest-attending" value="guest-false">
+                    <input id="guest-not-attending" type="radio"
+                           ng-model="guestAttending"
+                           value="no"
+                           ng-checked="{{'guestAttending === 'no'' | angular}}">
                     <label for="guest-not-attending">No</label>
-                    <input id="guest-attending" type="radio" name="guest-attending" value="guest-true">
+
+                    <input id="guest-attending" type="radio"
+                           ng-model="guestAttending"
+                           value="yes"
+                           ng-checked="{{'guestAttending === 'yes'' | angular}}">
                     <label for="guest-attending">Yes</label>
 
-                    <label for="guest-first-name">Guest first name</label>
-                    <input id="guest-first-name" name="guest-first-name" type="text" required="" aria-required="true">
+                    <div ng-show="guestAttending === 'yes'">
+                        <label for="guest-first-name">Guest first name</label>
+                        <input id="guest-first-name" name="guest-first-name" type="text" required="" aria-required="true">
 
-                    <label for="guest-last-name">Guest last name</label>
-                    <input id="guest-last-name" name="guest-last-name" type="text" required="" aria-required="true">
+                        <label for="guest-last-name">Guest last name</label>
+                        <input id="guest-last-name" name="guest-last-name" type="text" required="" aria-required="true">
+                    </div>
 
                 </fieldset>
                 <fieldset>
@@ -47,22 +56,29 @@ title: RSVP
                         <option value="value2">Option B</option>
                     </select>
 
-                    <label for="options">Guest dinner option</label>
-                    <select name="options" id="options">
-                        <option value="" disabled selected>Select...</option>
-                        <option value="value1">Option A</option>
-                        <option value="value2">Option B</option>
-                    </select>
+                    <div ng-show="guestAttending === 'yes'">
+                        <label for="options">Guest dinner option</label>
+                        <select name="options" id="options">
+                            <option value="" disabled selected>Select...</option>
+                            <option value="value1">Option A</option>
+                            <option value="value2">Option B</option>
+                        </select>
+                    </div>
                 </fieldset>
 
                 <fieldset>
                     <label>Are you interested in group accommodation rates?</label>
-                    <input id="yes-group-accommodation" type="radio" checked="" name="yes-group-accommodation" value="yes-group-accommodation">
+                    <input id="yes-group-accommodation" type="radio"
+                           ng-model="groupAccommodation"
+                           value="yes"
+                           ng-checked="{{'groupAccommodation === 'yes'' | angular}}">
                     <label for="yes-group-accommodation">Yes, please provide details to me when they are available!</label>
-                    <input id="no-group-accommodation" type="radio" name="no-group-accommodation" value="no-group-accommodation">
+
+                    <input id="no-group-accommodation" type="radio"
+                           ng-model="groupAccommodation"
+                           value="no"
+                           ng-checked="{{'groupAccommodation === 'no'' | angular}}">
                     <label for="no-group-accommodation">No, i'll figure out where to stay on my own.</label>
-
-
                 </fieldset>
 
                 <input type="submit" value="Submit">
