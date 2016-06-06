@@ -8,21 +8,17 @@ angular.module('WeddingApp.services', [])
         var d = $q.defer();
         AWSService.dynamo({
           params: {TableName: service.UsersTable}
-        }).then(function (table) {
+        }).then(function (docClient) {
           var itemParams = {
             Item: {
-              email: {S: user.email},
-              createdTimestampUtc: {N: JSON.stringify(new Date().getTime())},
-              firstName: {
-                S: user.firstName
-              },
-              lastName: {
-                S: user.lastName
-              }
+              email: user.email,
+              createdTimestampUtc: JSON.stringify(new Date().getTime()),
+              firstName: user.firstName,
+              lastName: user.lastName
             }
           };
 
-          table.putItem(itemParams, function (err, data) {
+          docClient.put(itemParams, function (err, data) {
             d.resolve(data);
           });
 
@@ -34,8 +30,8 @@ angular.module('WeddingApp.services', [])
         var d = $q.defer();
         AWSService.dynamo({
           params: {TableName: service.UsersTable}
-        }).then(function (table) {
-          table.get({
+        }).then(function (docClient) {
+          docClient.get({
               Key: {
                 email: userEmail
               }

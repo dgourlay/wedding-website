@@ -51,19 +51,32 @@ title: RSVP
                 </fieldset>
                 <fieldset>
 
-                    <label for="options">Dinner option</label>
+                    <h5>Available dinner options:</h5>
+                    <dl>
+                        <dt>Lobster</dt>
+                        <dd>Half lobster poached in champagne butter and truffle risotto.  Accompanied by a warm baby vegetable salad topped with lobster bisque dressing.</dd>
+
+                        <dt>Lamb</dt>
+                        <dd>Grilled lemon grass marinated lamb chops, papaya salsa, coconut gnocchi and galangal foam.</dd>
+
+                        <dt>Vegetarian</dt>
+                        <dd>Coconut gnocchi with saffron cream and watercress salad and tossed walnuts</dd>
+                    </dl>
+                    <label for="options">Desired dinner option</label>
                     <select name="options" id="options">
                         <option value="" disabled selected>Select...</option>
-                        <option value="value1">Option A</option>
-                        <option value="value2">Option B</option>
+                        <option value="lobster">Lobster</option>
+                        <option value="lamb">Lamb</option>
+                        <option value="vegetarian">Vegetarian</option>
                     </select>
 
                     <div ng-show="guestAttending === 'true'">
-                        <label for="options">Guest dinner option</label>
-                        <select name="options" id="options">
+                        <label for="guest-options">Guest's dinner option</label>
+                        <select name="guest-options" id="guest-options">
                             <option value="" disabled selected>Select...</option>
-                            <option value="value1">Option A</option>
-                            <option value="value2">Option B</option>
+                            <option value="lobster">Lobster</option>
+                            <option value="lamb">Lamb</option>
+                            <option value="vegetarian">Vegetarian</option>
                         </select>
                     </div>
                 </fieldset>
