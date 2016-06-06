@@ -10,18 +10,22 @@ title: RSVP
 
     <section class="wrapper style5">
         <div class="inner">
-            <form id="rsvp-form" ng-controller="RSVPController">
+            <form id="rsvp-form" name="rsvpform" ng-controller="RSVPController" ng-submit="submit(user)">
                 <h3>Kindly RSVP</h3>
                 <fieldset>
                     <label for="email">Email address <span class="usa-additional_text">Required</span></label>
-                    <input id="email" name="email" type="text" autocapitalize="off" autocorrect="off">
+                    <input id="email" name="email" type="email" autocapitalize="off" autocorrect="off"
+                           ng-model="user.email" ng-model-options="{ debounce: 500 }"
+                           ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/">
                 </fieldset>
                 <fieldset>
                     <label for="first-name">First name</label>
-                    <input id="first-name" name="first-name" type="text" required="" aria-required="true">
+                    <input id="first-name" name="first-name" type="text"
+                           ng-model="user.firstName" required="" aria-required="true">
 
                     <label for="last-name">Last name</label>
-                    <input id="last-name" name="last-name" type="text" required="" aria-required="true">
+                    <input id="last-name" name="last-name" type="text"
+                           ng-model="user.lastName" required="" aria-required="true">
 
                 </fieldset>
                 <fieldset>
@@ -38,10 +42,10 @@ title: RSVP
 
                     <div ng-show="guestAttending === 'true'">
                         <label for="guest-first-name">Guest first name</label>
-                        <input id="guest-first-name" name="guest-first-name" type="text" required="" aria-required="true">
+                        <input id="guest-first-name" name="guest-first-name" type="text">
 
                         <label for="guest-last-name">Guest last name</label>
-                        <input id="guest-last-name" name="guest-last-name" type="text" required="" aria-required="true">
+                        <input id="guest-last-name" name="guest-last-name" type="text">
                     </div>
 
                 </fieldset>
@@ -78,7 +82,6 @@ title: RSVP
                 </fieldset>
 
                 <input type="submit" value="Submit">
-
             </form>
         </div>
     </section>

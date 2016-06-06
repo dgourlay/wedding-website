@@ -52,3 +52,5 @@ Temporary Items
 .idea/**/*
 *.iml
 Gemfile.lock
+
+js/angular/weddingapp/credentials.json

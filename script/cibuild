@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 set -e # halt script on error
-
+echo "{\"access_key\": \"$DYNAMO_ACCESS_KEY\", \"secret_access_key\": \"$DYNAMO_SECRET_ACCESS_KEY\"}" > js/angular/weddingapp/credentials.json
 bundle exec jekyll build
 bundle exec htmlproofer ./_site
