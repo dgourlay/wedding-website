@@ -9,13 +9,16 @@ angular.module('WeddingApp.services', [])
         AWSService.dynamo({
           params: {TableName: service.UsersTable}
         }).then(function (docClient) {
-          var itemParams = {
-            Item: {
-              email: user.email,
-              createdTimestampUtc: JSON.stringify(new Date().getTime()),
-              firstName: user.firstName,
-              lastName: user.lastName
+
+          var item = {};
+          for (var property in user) {
+            if (user.hasOwnProperty(property)) {
+              item[property] = user[property];
             }
+          }
+          
+          var itemParams = {
+            Item: item
           };
 
           docClient.put(itemParams, function (err, data) {

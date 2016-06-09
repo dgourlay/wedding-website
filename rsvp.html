@@ -31,21 +31,23 @@ title: RSVP
                 <fieldset>
                     <label>Will you be brining a guest?</label>
                     <input id="guest-not-attending" type="radio"
-                           ng-model="guestAttending"
+                           ng-model="user.guest.attending"
                            value="false">
                     <label for="guest-not-attending">No</label>
 
                     <input id="guest-attending" type="radio"
-                           ng-model="guestAttending"
+                           ng-model="user.guest.attending"
                            value="true">
                     <label for="guest-attending">Yes</label>
 
-                    <div ng-show="guestAttending === 'true'">
+                    <div ng-show="user.guest.attending === 'true'">
                         <label for="guest-first-name">Guest first name</label>
-                        <input id="guest-first-name" name="guest-first-name" type="text">
+                        <input id="guest-first-name" name="guest-first-name" type="text"
+                               ng-model="user.guest.firstName">
 
                         <label for="guest-last-name">Guest last name</label>
-                        <input id="guest-last-name" name="guest-last-name" type="text">
+                        <input id="guest-last-name" name="guest-last-name" type="text"
+                               ng-model="user.guest.lastName">
                     </div>
 
                 </fieldset>
@@ -54,7 +56,9 @@ title: RSVP
                     <h5>Available dinner options:</h5>
                     <dl>
                         <dt>Lobster</dt>
-                        <dd>Half lobster poached in champagne butter and truffle risotto.  Accompanied by a warm baby vegetable salad topped with lobster bisque dressing.</dd>
+                        <dd>Half lobster poached in champagne butter and truffle risotto. Accompanied by a warm baby vegetable salad topped with lobster bisque
+                            dressing.
+                        </dd>
 
                         <dt>Lamb</dt>
                         <dd>Grilled lemon grass marinated lamb chops, papaya salsa, coconut gnocchi and galangal foam.</dd>
@@ -63,16 +67,17 @@ title: RSVP
                         <dd>Coconut gnocchi with saffron cream and watercress salad and tossed walnuts.</dd>
                     </dl>
                     <label for="options">Desired dinner option</label>
-                    <select name="options" id="options">
+                    <select name="options" id="options" ng-model="user.dinnerOption">
                         <option value="" disabled selected>Select...</option>
                         <option value="lobster">Lobster</option>
                         <option value="lamb">Lamb</option>
                         <option value="vegetarian">Vegetarian</option>
                     </select>
 
-                    <div ng-show="guestAttending === 'true'">
+                    <div ng-show="user.guest.attending === 'true'">
                         <label for="guest-options">Guest's dinner option</label>
-                        <select name="guest-options" id="guest-options">
+                        <select name="guest-options" id="guest-options"
+                                ng-model="user.guest.dinnerOption">
                             <option value="" disabled selected>Select...</option>
                             <option value="lobster">Lobster</option>
                             <option value="lamb">Lamb</option>
@@ -84,12 +89,12 @@ title: RSVP
                 <fieldset>
                     <label>Are you interested in group accommodation rates?</label>
                     <input id="yes-group-accommodation" type="radio"
-                           ng-model="groupAccommodation"
+                           ng-model="user.groupAccommodation"
                            value="true">
                     <label for="yes-group-accommodation">Yes, please provide details to me when they are available!</label>
 
                     <input id="no-group-accommodation" type="radio"
-                           ng-model="groupAccommodation"
+                           ng-model="user.groupAccommodation"
                            value="false">
                     <label for="no-group-accommodation">No, i'll figure out where to stay on my own.</label>
                 </fieldset>

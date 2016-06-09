@@ -5,9 +5,8 @@ angular.module('WeddingApp', ['WeddingApp.services'])
     $scope.$watch('user.email', function (newValue, oldValue) {
       if ($scope.rsvpform.email.$valid && $scope.rsvpform.email.$dirty) {
         UserService.getUser($scope.user.email).then(function (resp) {
-          $scope.user.firstName = resp.firstName;
-          $scope.user.lastName = resp.lastName;
-          console.log($scope.user)
+          $scope.user = resp;
+          console.log(JSON.stringify($scope.user))
         });
       }
     });
