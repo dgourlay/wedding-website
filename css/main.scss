@@ -1899,11 +1899,17 @@ $baseurl: '{{ site.baseurl }}/images';
 	}
 	.ngdialog.ngdialog-theme-plain .ngdialog-content {
 		width: 600px;
-		min-height: 450px;
+		padding-bottom: 4.0em;
+		strong, b {
+			color: black;
+		}
 	}
 	.ngdialog.ngdialog-theme-flat .ngdialog-content {
 		width: 600px;
 		padding-bottom: 4.0em;
+		strong, b {
+			color: black;
+		}
 	}
 	.ngdialog.ngdialog-theme-flat {
 		font-size: 1.0em;
