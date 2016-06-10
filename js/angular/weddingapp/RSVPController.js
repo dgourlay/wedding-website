@@ -1,5 +1,5 @@
 angular.module('WeddingApp', ['WeddingApp.services', 'ngDialog'])
-  .controller('RSVPController', function ($scope, UserService, ngDialog) {
+  .controller('RSVPController', function ($scope, UserService, ngDialog, $window) {
 
     $scope.user = {};
     $scope.$watch('user.email', function (newValue, oldValue) {
@@ -17,18 +17,17 @@ angular.module('WeddingApp', ['WeddingApp.services', 'ngDialog'])
     $scope.submit = function (user) {
       UserService.putUser(user).then(function (resp) {
         console.log("Saved user: " + resp);
-        ngDialog.open(
+        var dialog = ngDialog.open(
           {
             template: 'rsvpConfirm.html',
-            controller: ['$scope', '$window', function($scope, $window) {
-              $scope.okAction = function(){
-                $scope.closeThisDialog();
-                $window.location.assign('/');
-              }
-            }],
             className: 'ngdialog-theme-flat'
           }
         );
+
+        dialog.closePromise.then(function (data) {
+          $window.location.assign('/');
+        });
+
       });
     }
   });
