@@ -15,18 +15,18 @@ title: RSVP
                 <h3>Kindly RSVP</h3>
                 <fieldset>
                     <label for="email">Email address <span class="usa-additional_text">Required</span></label>
-                    <input id="email" name="email" type="email" autocapitalize="off" autocorrect="off"
+                    <input id="email" name="email" type="email" required="true" autocapitalize="off" autocorrect="off"
                            ng-model="user.email" ng-model-options="{ debounce: 500 }"
                            ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/">
                 </fieldset>
                 <fieldset>
                     <label for="first-name">First name</label>
                     <input id="first-name" name="first-name" type="text"
-                           ng-model="user.firstName" required="" aria-required="true">
+                           ng-model="user.firstName" required="true" aria-required="true">
 
                     <label for="last-name">Last name</label>
                     <input id="last-name" name="last-name" type="text"
-                           ng-model="user.lastName" required="" aria-required="true">
+                           ng-model="user.lastName" required="true" aria-required="true">
 
                 </fieldset>
                 <fieldset>
