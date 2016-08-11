@@ -1954,3 +1954,8 @@ $baseurl: '{{ site.baseurl }}/images';
 			}
 		}
 	}
+
+
+a.no-decoration {
+		border-bottom: none;
+}
