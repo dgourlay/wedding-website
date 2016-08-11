@@ -1956,6 +1956,10 @@ $baseurl: '{{ site.baseurl }}/images';
 	}
 
 
-a.no-decoration {
-		border-bottom: none;
-}
+	a.no-decoration {
+			border-bottom: none;
+	}
+
+	.mainpagebutton {
+		margin-top: 1em;
+	}
