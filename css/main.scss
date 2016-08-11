@@ -1731,6 +1731,12 @@ $baseurl: '{{ site.baseurl }}/images';
         @include vendor('background-image', ('linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5))', 'url("#{$baseurl}/banner2.jpg")'));
       }
     }
+    #main3 {
+      @extend #main;
+      > header {
+        @include vendor('background-image', ('linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5))', 'url("#{$baseurl}/banner6.jpg")'));
+      }
+    }
 
 	body.is-mobile {
 		#main {
@@ -1919,4 +1925,32 @@ $baseurl: '{{ site.baseurl }}/images';
 	}
 	.ngdialog.ngdialog-theme-flat {
 		font-size: 1.0em;
+	}
+
+	.dayOfDetails {
+		h3 {
+			color: _palette(accent1, bg) !important;
+		}
+
+		.h3-tight {
+			margin-bottom: 0;
+		}
+
+		.villa-desc {
+			margin-top: 1em;
+		}
+
+		.tableOfContents{
+			font-size: 0.9em;
+			letter-spacing: 0;
+			padding: 0.25em 0.65em;
+
+			@media (min-width: $mobile-screen) {
+				width: 250px;
+				margin-right: 0.2em;
+				float: right;
+				position: relative;
+				top: -3em;
+			}
+		}
 	}
