@@ -1963,3 +1963,9 @@ $baseurl: '{{ site.baseurl }}/images';
 	.mainpagebutton {
 		margin-top: 1em;
 	}
+
+	#map {
+		height: 500px;
+		width: 70%;
+		margin-bottom: 1em;
+	}

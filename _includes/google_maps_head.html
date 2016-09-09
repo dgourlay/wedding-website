@@ -1,0 +1,66 @@
+<meta name="viewport" content="initial-scale=1.0">
+<meta charset="utf-8">
+<script>
+    var map;
+    function initMap() {
+
+        var markers = [];
+        var villaLatLng = {lat: 8.241203, lng: 98.283108};
+        var hotels = [
+            {label: 'Renaissance Phuket Resort & Spa', pos: {lat: 8.155897, lng: 98.297584}},
+            {label: 'Marriott Mai Khao', pos: {lat: 8.168727, lng: 98.295762}},
+            {label: 'Anantara Vacation Club Mai Khao', pos: {lat: 8.170299, lng: 98.296451}}
+        ];
+        var mapCenter = hotels[1].pos;
+
+        var markerImage = {
+            url: 'images/google-star.png',
+            // This marker is 20 pixels wide by 32 pixels high.
+            scaledSize: new google.maps.Size(32, 32),
+            // The origin for this image is (0, 0).
+            origin: new google.maps.Point(0, 0),
+            // The anchor for this image is the base of the flagpole at (0, 32).
+            anchor: new google.maps.Point(0, 32)
+        };
+
+
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: mapCenter,
+            zoom: 12
+        });
+
+        new google.maps.Marker({
+            position: villaLatLng,
+            map: map,
+            icon: markerImage
+        });
+
+        drop();
+
+        function drop() {
+            clearMarkers();
+            for (var i = 0; i < hotels.length; i++) {
+                addMarkerWithTimeout(hotels[i], i * 200);
+            }
+        }
+
+        function addMarkerWithTimeout(hotel, timeout) {
+            window.setTimeout(function () {
+                markers.push(new google.maps.Marker({
+                    position: hotel.pos,
+                    map: map,
+                    label: hotel.label,
+                    labelContent: hotel.label,
+                    animation: google.maps.Animation.DROP
+                }));
+            }, timeout);
+        }
+
+        function clearMarkers() {
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(null);
+            }
+            markers = [];
+        }
+    }
+</script>
