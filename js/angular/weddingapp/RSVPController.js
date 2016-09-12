@@ -1,7 +1,8 @@
 angular.module('WeddingApp', ['WeddingApp.services', 'ngDialog'])
   .controller('RSVPController', function ($scope, UserService, ngDialog, $window) {
 
-    $scope.user = {};
+    $scope.user = {allergy: 'false'};
+
     $scope.$watch('user.email', function (newValue, oldValue) {
       if ($scope.rsvpform.email.$valid && $scope.rsvpform.email.$dirty) {
         UserService.getUser($scope.user.email).then(function (resp) {
@@ -10,9 +11,6 @@ angular.module('WeddingApp', ['WeddingApp.services', 'ngDialog'])
         });
       }
     });
-
-    $scope.guestAttending = 'false';
-    $scope.groupAccommodation = 'true';
 
     $scope.submit = function (user) {
       UserService.putUser(user).then(function (resp) {

@@ -88,16 +88,18 @@ title: RSVP
                 </fieldset>
 
                 <fieldset>
-                    <label>Are you interested in group accommodation rates?</label>
-                    <input id="yes-group-accommodation" type="radio"
-                           ng-model="user.groupAccommodation"
-                           value="true">
-                    <label for="yes-group-accommodation">Yes, please provide details to me when they are available!</label>
-
-                    <input id="no-group-accommodation" type="radio"
-                           ng-model="user.groupAccommodation"
+                    <label>Do you have any allergies we should know about?  If so please enter them below.</label>
+                    <input id="no-allergy" type="radio"
+                           ng-model="user.allergy"
                            value="false">
-                    <label for="no-group-accommodation">No, i'll figure out where to stay on my own.</label>
+                    <label for="no-allergy">No</label>
+
+                    <input id="yes-allergy" type="radio"
+                           ng-model="user.allergy"
+                           value="true">
+                    <label for="yes-allergy">Yes</label>
+                    <input id="allergy-desc" ng-disabled="user.allergy === 'false'" name="allergy" type="text" required="false" autocapitalize="off" autocorrect="off"
+                           ng-model="user.allergyDesc" placeholder="Allergies...">
                 </fieldset>
 
                 <div id="submitDiv">
