@@ -1,7 +1,12 @@
 angular.module('WeddingApp', ['WeddingApp.services', 'ngDialog'])
   .controller('RSVPController', function ($scope, UserService, ngDialog, $window) {
 
-    $scope.user = {allergy: 'false'};
+    $scope.user = {
+      attending: 'true',
+      allergy: 'false',
+      guest: {
+        attending: 'false'
+      }};
 
     $scope.$watch('user.email', function (newValue, oldValue) {
       if ($scope.rsvpform.email.$valid && $scope.rsvpform.email.$dirty) {

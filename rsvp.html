@@ -30,6 +30,18 @@ title: RSVP
 
                 </fieldset>
                 <fieldset>
+                    <label>Will you be attending?</label>
+                    <input id="will-not-be-attending" type="radio"
+                           ng-model="user.attending"
+                           value="false">
+                    <label for="will-not-be-attending">No</label>
+
+                    <input id="will-be-attending" type="radio"
+                           ng-model="user.attending"
+                           value="true">
+                    <label for="will-be-attending">Yes</label>
+                </fieldset>
+                <fieldset ng-show="user.attending === 'true'">
                     <label>Will you be bringing a guest?</label>
                     <input id="guest-not-attending" type="radio"
                            ng-model="user.guest.attending"
@@ -52,7 +64,7 @@ title: RSVP
                     </div>
 
                 </fieldset>
-                <fieldset>
+                <fieldset ng-show="user.attending === 'true'">
 
                     <h5>Available dinner options:</h5>
                     <dl>
@@ -87,7 +99,7 @@ title: RSVP
                     </div>
                 </fieldset>
 
-                <fieldset>
+                <fieldset ng-show="user.attending === 'true'">
                     <label>Do you have any allergies we should know about?  If so please enter them below.</label>
                     <input id="no-allergy" type="radio"
                            ng-model="user.allergy"

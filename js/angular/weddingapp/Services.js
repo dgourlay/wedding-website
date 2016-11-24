@@ -46,11 +46,22 @@ angular.module('WeddingApp.services', [])
 
               if (Object.keys(data).length == 0) {
                 // User didn't previously exist
-                var user = {email: userEmail, createdTimestampUtc: new Date().getTime()};
+                var user = {
+                  email: userEmail,
+                  createdTimestampUtc: new Date().getTime(),
+                  attending: 'true',
+                  allergy: 'false',
+                  guest: {
+                    attending: 'false'
+                  }
+                };
                 service._user = user;
                 d.resolve(service._user);
               } else {
                 service._user = data.Item;
+                if (!service._user.hasOwnProperty('attending')) {
+                  service._user.attending = 'true';
+                }
                 d.resolve(service._user);
               }
             });
