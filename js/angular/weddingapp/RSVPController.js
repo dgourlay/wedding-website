@@ -6,7 +6,8 @@ angular.module('WeddingApp', ['WeddingApp.services', 'ngDialog'])
       allergy: 'false',
       guest: {
         attending: 'false'
-      }};
+      }
+    };
 
     $scope.$watch('user.email', function (newValue, oldValue) {
       if ($scope.rsvpform.email.$valid && $scope.rsvpform.email.$dirty) {
@@ -33,4 +34,21 @@ angular.module('WeddingApp', ['WeddingApp.services', 'ngDialog'])
 
       });
     }
+  })
+  .controller('RSVPView', function ($scope, UserService) {
+    $scope.responses = [];
+    // $scope.responses.push({firstName: 'abc'});
+
+    UserService.showAll().then(function (responses) {
+      $scope.responses = responses;
+      for (i = 0; i < responses.length; i++) {
+        if ($scope.responses[i].attending === undefined) {
+          $scope.responses[i].attending = true;
+        }
+        if ($scope.responses[i].guest.attending === undefined) {
+          $scope.responses[i].guest.attending = true;
+        }
+      }
+    });
+
   });

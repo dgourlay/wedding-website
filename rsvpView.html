@@ -1,0 +1,41 @@
+---
+layout: angular_default
+title: RSVP
+---
+
+<article id="main2" ng-app="WeddingApp">
+    <header>
+        <h2>RSVP Responses</h2>
+    </header>
+
+    <section class="wrapper style5">
+        <table ng-controller="RSVPView">
+            <thead>
+            <tr>
+                <td>FirstName</td>
+                <td>LastName</td>
+                <td>email</td>
+                <td>attending?</td>
+                <td>dinnerOption</td>
+                <td>allergy?</td>
+                <td>guest Attending?</td>
+                <td>guest FirstName</td>
+                <td>guest LastName</td>
+                <td>guest dinnerOption</td>
+            </tr>
+            </thead>
+            <tr ng-repeat="r in responses">
+                <td>{{ 'r.firstName' | angular }}</td>
+                <td>{{ 'r.lastName' | angular }}</td>
+                <td>{{ 'r.email' | angular }}</td>
+                <td>{{ 'r.attending' | angular }}</td>
+                <td>{{ 'r.dinnerOption' | angular }}</td>
+                <td>{{ 'r.allergy' | angular }}</td>
+                <td>{{ 'r.guest.attending' | angular }}</td>
+                <td>{{ 'r.guest.firstName' | angular }}</td>
+                <td>{{ 'r.guest.lastName' | angular }}</td>
+                <td>{{ 'r.guest.dinnerOption' | angular }}</td>
+            </tr>
+        </table>
+    </section>
+</article>
