@@ -16,7 +16,7 @@ angular.module('WeddingApp.services', [])
               item[property] = user[property];
             }
           }
-
+          
           var itemParams = {
             Item: item
           };
@@ -65,26 +65,6 @@ angular.module('WeddingApp.services', [])
                 d.resolve(service._user);
               }
             });
-        });
-
-        return d.promise;
-      },
-      showAll: function () {
-        var d = $q.defer();
-        AWSService.dynamo({
-          params: {
-            TableName: service.UsersTable,
-            Select: "ALL_ATTRIBUTES"
-          }
-        }).then(function (docClient) {
-          docClient.scan(function (err, data) {
-            if (err) {
-              console.log(err);
-            } else {
-              console.log(data.Items);
-              d.resolve(data.Items);
-            }
-          });
         });
 
         return d.promise;
