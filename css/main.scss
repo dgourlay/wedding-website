@@ -875,6 +875,10 @@ $baseurl: '{{ site.baseurl }}/images';
 			}
 		}
 
+		&.special2 {
+			background-color: _palette(accent5, bg);
+		}
+
 		&.disabled,
 		&:disabled {
 			@include vendor('pointer-events', 'none');
